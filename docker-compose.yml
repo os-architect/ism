@@ -1,0 +1,20 @@
+ember: &defaults
+  image: danlynn/ember-cli:3.7.1
+  volumes:
+    - ./watcher:/myapp
+
+npm:
+  <<: *defaults
+  command: npm install
+
+bower:
+  <<: *defaults
+  command: bower install --allow-root
+
+server:
+  <<: *defaults
+  command: ember serve --watcher polling
+  ports:
+    - "4200:4200"
+    - "7020:7020"
+    - "7357:7357"
