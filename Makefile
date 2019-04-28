@@ -5,5 +5,4 @@ install:
 	docker-compose run ember npm install
 
 serve:
-	docker-compose up 
-
+	docker-compose up
