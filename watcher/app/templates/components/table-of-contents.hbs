@@ -1,0 +1,6 @@
+{{ this.title }}
+{{#each-in this.content as |key value| }}
+<table>
+    <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+</table>
+{{/each-in}}

@@ -1,0 +1,7 @@
+{{#bs-form onSubmit=(action "login") as |form|}}
+    {{#form.group validation=firstNameValidation}}
+    {{form.element controlType="text" label="" placeholder="login" value=email}}
+    {{form.element controlType="password" label="" placeholder="password" value=password}}
+    {{bs-button defaultText="__________" type="primary" buttonType="submit"}}
+    {{/form.group}}
+{{/bs-form}}
