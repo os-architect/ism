@@ -1,1 +1,9 @@
-{{yield}}Map content goes here
+<table>
+{{#each-in tiles as |rown row| }}
+    <tr>
+        {{#each-in row as |celln cell| }}
+            <td> {{ cell.status }} </td>
+        {{/each-in}}
+    </tr>
+{{/each-in}}
+</table>

@@ -1,11 +1,12 @@
 import Route from '@ember/routing/route';
+import { mod } from 'ember-math-helpers/helpers/mod';
 
 export default Route.extend({
 
     afterModel(model) {
         self = this;
         Ember.run.later((function() {
-            self.refresh();
+            self.refresh()
         }), 1000);
     },
 
