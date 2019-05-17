@@ -44,8 +44,8 @@ export default Route.extend({
             },
             "position": {
                 "map": "anchovas",
-                "x": "" +  + getRandomArbitrary(0,100),
-                "y": "" +  + getRandomArbitrary(0,100)
+                "x": + getRandomArbitrary(0,10),
+                "y": + getRandomArbitrary(0,10)
             }
         }
     }

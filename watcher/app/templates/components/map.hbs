@@ -2,7 +2,11 @@
 {{#each-in tiles as |rown row| }}
     <tr>
         {{#each-in row as |celln cell| }}
-            <td> {{ cell.status }} </td>
+            <Map-Tile
+              @x={{celln}}
+              @y={{rown}}
+              @content={{cell.content}}
+            />
         {{/each-in}}
     </tr>
 {{/each-in}}
