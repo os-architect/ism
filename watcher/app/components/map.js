@@ -1,11 +1,14 @@
 import Component from '@ember/component';
+import EmberObject, { computed } from '@ember/object';
 
 export default Component.extend({
     classNames: ["map"],
 
-    tiles: [],
+    tiles: computed('character', function() {
+        return this.createTiles()
+    }),
 
-    init() {
+    createTiles() {
         this._super();
         var i = 0;
         var rows = 10;
@@ -13,22 +16,26 @@ export default Component.extend({
         var isInThisCell = false;
         var x = this.get('character').position.x;
         var y = this.get('character').position.y;
+        var tiles = []
         var subarray = [];
         var content = [];
 
         for(i = 1; i<(rows*cols)+1; i++){
 
-          isInThisCell = ((y * cols) + x ) == i - 1
-          content = isInThisCell ? [this.get('character')] : []
+            isInThisCell = ((y * cols) + x ) == i - 1
+            content = isInThisCell ? [this.get('character')] : []
 
-          subarray.push({"content": content})
+            subarray.push({"content": content})
 
-          if(i != 0 && i % 10 == 0){
-            this.get('tiles').push(subarray)
-            subarray = []
-          }
+            if(i != 0 && i % 10 == 0){
+              tiles.push(subarray)
+              subarray = []
+            }
 
         }
+
+        return tiles;
+
     }
 
 });

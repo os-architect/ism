@@ -1,29 +1,21 @@
 import Component from '@ember/component';
+import EmberObject, { computed } from '@ember/object';
 
 export default Component.extend({
 
   tagName: 'td',
   classNames: ['map-tile'],
   _markedPlayerClass: 'map-tile-player',
-
-  markPlayer: false,
-  markContent: false,
-
   content: [],
   x: -1,
   y: -1,
 
-  init() {
-      this._super();
-      var content = this.get('content');
+  markPlayer: computed('content', function() {
+      return this.get('content').length > 0 && this.get('x') == this.get('content')[0].position.x && this.get('y') == this.get('content')[0].position.y;
+  }),
 
-      if(content.length > 0){
-          if(this.get('x') == content[0].position.x && this.get('y') == content[0].position.y ){
-              this.toggleProperty('markPlayer')
-          } else {
-              this.toggleProperty('markContent')
-          }
-      }
-  }
+  markContent: computed('content', function() {
+      return this.get('content').length > 0 && !this.get('markPlayer')
+  })
 
 });
