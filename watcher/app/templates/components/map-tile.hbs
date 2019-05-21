@@ -1,1 +1,12 @@
-<div class="{{ if this.markPlayer "map-tile-player" }}" ></div>
+<div class="{{ if this.markPlayer "map-tile-player" }}" >
+    {{#if (and this.markContent content.character) }}
+        <Profile
+            @classNames=["floating-profile"]
+            @character={{ content.character }}
+            @position={{ content.character.position }}
+            @attributes={{ content.character.attributes }}
+            @skills={{ content.character.skills }}
+            @inventory={{ content.character.inventory }}
+         />
+    {{/if}}
+</div>

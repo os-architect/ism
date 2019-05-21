@@ -4,7 +4,7 @@ import EmberObject, { computed } from '@ember/object';
 export default Component.extend({
     classNames: ["map"],
 
-    tiles: computed('character', function() {
+    tiles: computed('player', function() {
         return this.createTiles()
     }),
 
@@ -14,8 +14,8 @@ export default Component.extend({
         var rows = 10;
         var cols = 10;
         var isInThisCell = false;
-        var x = this.get('character').position.x;
-        var y = this.get('character').position.y;
+        var x = this.get('player').position.x;
+        var y = this.get('player').position.y;
         var tiles = []
         var subarray = [];
         var content = [];
@@ -23,9 +23,14 @@ export default Component.extend({
         for(i = 1; i<(rows*cols)+1; i++){
 
             isInThisCell = ((y * cols) + x ) == i - 1
-            content = isInThisCell ? [this.get('character')] : []
 
-            subarray.push({"content": content})
+            // TODO SCAN FOR OTHER CHARACTERS TOO!!!!
+            // ADD THEM HERE SO THAT THE TILES CAN BE COLORED ACCORDINGLY
+
+            subarray.push({"content": {
+                "player": isInThisCell ? [this.get('player')] : {},
+
+            }})
 
             if(i != 0 && i % 10 == 0){
               tiles.push(subarray)
