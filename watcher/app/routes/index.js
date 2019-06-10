@@ -18,20 +18,37 @@ export default Route.extend({
     model() {
         return {
             "player": this.generatePlayer(),
-            "map": this.get('map'),
-            "characters": [
-                this.get('enemy')
-            ],
-            "objects": []
+            "map": this.generateMap()
         }
     },
 
-    map: {
 
-        "name": "Olive Land",
-        "width": "10",
-        "height": "10"
+    generateRandomTiles() {
 
+        var tiles = []
+        var numTiles = 100;
+
+        for (var i=0; i<numTiles; i++){
+
+            tiles.push({
+                 "id": Math.random(),
+                 "characters": [this.enemy],
+                 "objects": []
+            })
+
+        }
+
+        return tiles
+
+    },
+
+    generateMap() {
+        return {
+            "name": "Olive Land",
+            "width": "10",
+            "height": "10",
+            "tiles": this.generateRandomTiles()
+        }
     },
 
     generatePlayer() {
@@ -86,11 +103,6 @@ export default Route.extend({
             "INT": "87",
             "DEX": "49",
             "VIT": "1023"
-        },
-        "position": {
-            "map": "anchovas",
-            "x": + 3,
-            "y": + 2
         }
     }
 

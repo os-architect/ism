@@ -11,11 +11,11 @@ export default Component.extend({
   y: -1,
 
   markPlayer: computed('content', function() {
-      return this.get('content').length > 0 && this.get('x') == this.get('content')[0].position.x && this.get('y') == this.get('content')[0].position.y;
+      return this.get('player') != null;
   }),
 
   markContent: computed('content', function() {
-      return this.get('content').length > 0 && !this.get('markPlayer')
+      return this.get('characters').length > 0;
   })
 
 });
