@@ -27,12 +27,16 @@ div.container {
             border: 1px solid lightblue;
         }
 
-        td.map-tile > div.map-tile-player {
+        td.map-tile > div.map-tile-content {
             height: 100%;
         }
 
         /* tile that has the player */
         td.map-tile > div.map-tile-player {
+            background-color: blue;
+        }
+
+        td.map-tile > div.map-tile-character {
             background-color: red;
         }
 

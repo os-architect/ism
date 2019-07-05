@@ -5,7 +5,8 @@
             <Map-Tile
               @x={{celln}}
               @y={{rown}}
-              @characters={{ cell.characters }}
+              @player={{ cell.player }}
+              @character={{ cell.character }}
               @objects={{ cell.objects }}
             />
         {{/each-in}}

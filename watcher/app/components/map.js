@@ -10,7 +10,7 @@ export default Component.extend({
 
         var cols = Math.sqrt(this.get('map').tiles.length)
 
-        // add player indication to player tile
+        // add player indication to player tiles
         var playerY = this.get('player').position.y;
         var playerX = this.get('player').position.x;
 
@@ -22,16 +22,12 @@ export default Component.extend({
     tiles: computed('map', function() {
 
         var tilesArray = this.get('map').tiles
-        console.log(tilesArray.length)
         var numRows = Math.sqrt(tilesArray.length)
-        console.log(numRows)
         var rows = []
 
         for(var i=0; i<numRows; i++){
             rows.push(tilesArray.splice(0, numRows))
         }
-
-        console.log(rows)
 
         return rows
 

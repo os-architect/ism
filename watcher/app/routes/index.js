@@ -16,6 +16,7 @@ export default Route.extend({
     },
 
     model() {
+        console.log('Return new model')
         return {
             "player": this.generatePlayer(),
             "map": this.generateMap()
@@ -27,16 +28,22 @@ export default Route.extend({
 
         var tiles = []
         var numTiles = 100;
+        var randomTileWithEnemy = Math.floor(Math.random() * numTiles)
 
         for (var i=0; i<numTiles; i++){
 
             tiles.push({
                  "id": Math.random(),
-                 "characters": [this.enemy],
-                 "objects": []
+                 "character": false,
+                 "objects": [],
+                 "player": false
             })
 
         }
+
+        tiles[0]["character"] = this.enemy
+
+//        tiles[randomTileWithEnemy]["character"] = this.enemy
 
         return tiles
 

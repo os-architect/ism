@@ -6,16 +6,17 @@ export default Component.extend({
   tagName: 'td',
   classNames: ['map-tile'],
   _markedPlayerClass: 'map-tile-player',
-  content: [],
+  objects: [],
+  character: [],
   x: -1,
   y: -1,
 
-  markPlayer: computed('content', function() {
-      return this.get('player') != null;
+  markPlayer: computed('player', function() {
+      return this.get('player');
   }),
 
-  markContent: computed('content', function() {
-      return this.get('characters').length > 0;
+  markContent: computed('character', function() {
+      return this.get('character');
   })
 
 });
