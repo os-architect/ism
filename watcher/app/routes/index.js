@@ -3,6 +3,8 @@ import { mod } from 'ember-math-helpers/helpers/mod';
 
 export default Route.extend({
 
+    numCols: 25,
+
     afterModel(model) {
         self = this;
         Ember.run.later((function() {
@@ -27,7 +29,7 @@ export default Route.extend({
     generateRandomTiles() {
 
         var tiles = []
-        var numTiles = 100;
+        var numTiles = this.get('numCols') * this.get('numCols')
         var randomTileWithEnemy = Math.floor(Math.random() * numTiles)
 
         for (var i=0; i<numTiles; i++){
@@ -85,8 +87,8 @@ export default Route.extend({
              },
              "position": {
                  "map": "anchovas",
-                 "x": + Math.floor(Math.random() * 10),
-                 "y": + Math.floor(Math.random() * 10)
+                 "x": + Math.floor(Math.random() * this.get('numCols')),
+                 "y": + Math.floor(Math.random() * this.get('numCols'))
              }
         }
 
