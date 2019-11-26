@@ -4,18 +4,14 @@ services:
         image: openjdk:11.0.5-stretch
         volumes:
             - .:/app
-
-    kafka:
-        image: wurstmeister/kafka
-        ports:
-            - "9092:9092"
+        links:
+            - redis
         environment:
-            KAFKA_ADVERTISED_HOST_NAME: localhost
-            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            - REDIS_HOST=redis://redis
 
     redis:
         image: redis
-        container_name: cache
+        container_name: redis
         expose:
             - 6379
 
