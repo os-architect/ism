@@ -1,15 +1,21 @@
 package api.implementation.model;
 
 import api.meta.model.Model;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Authentication extends Model {
 
     private long sessionStart;
     private List<String> policies;
 
-    public Authentication(long sessionStart, List<String> policies) {
+    @JsonCreator
+    public Authentication(@JsonProperty("id") UUID id, @JsonProperty("sessionStart") long sessionStart, @JsonProperty("policies") List<String> policies) {
+        super(id);
         this.sessionStart = sessionStart;
         this.policies = policies;
     }

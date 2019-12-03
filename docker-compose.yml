@@ -1,19 +1,30 @@
-version: '3'
+version: '3.7'
 services:
-    api:
-        image: openjdk:11.0.5-stretch
-        volumes:
-            - .:/app
-        links:
-            - redis
-        environment:
-            - REDIS_HOST=redis://redis
+  api:
+    image: openjdk:14-jdk-alpine
+    command: java -jar /app/build/libs/ism-api-0.0.0-boot.jar
+    volumes:
+      - .:/app
+    links:
+      - "redis:redis"
+    environment:
+      - REDIS_HOST=redis
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+    networks:
+      - dev
 
-    redis:
-        image: redis
-        container_name: redis
-        expose:
-            - 6379
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    hostname: redis
+    volumes:
+      - redisdata:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - dev
 
 #    ember: &defaults
 #        image: danlynn/ember-cli:3.7.1
@@ -35,3 +46,12 @@ services:
 #            - "4200:4200"
 #            - "7020:7020"
 #            - "7357:7357"
+
+networks:
+  dev:
+    driver: "bridge"
+volumes:
+  mysqldata:
+    driver: "local"
+  redisdata:
+    driver: "local"

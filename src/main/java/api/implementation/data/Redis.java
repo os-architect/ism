@@ -1,6 +1,10 @@
 package api.implementation.data;
 
-import api.implementation.config.Parameters;
+import api.implementation.config.Config;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -9,7 +13,8 @@ import java.time.Duration;
 
 public class Redis {
 
-    private static Redis _instance = new Redis();
+    private static Redis _instance = null; // only access through getInstance()
+
     private JedisPool pool;
 
     private Redis() {
@@ -24,27 +29,33 @@ public class Redis {
         poolConfig.setTimeBetweenEvictionRunsMillis(Duration.ofSeconds(30).toMillis());
         poolConfig.setNumTestsPerEvictionRun(3);
         poolConfig.setBlockWhenExhausted(true);
-        _instance = this;
-        _instance.pool = new JedisPool(poolConfig, Parameters.REDIS_HOST);
+        this.pool = new JedisPool(poolConfig, Config.get("REDIS_HOST"));
     }
 
 
     public static String get(String key) {
-        try (Jedis jedis = _instance.pool.getResource()) {
+        try (Jedis jedis = getInstance().pool.getResource()) {
             return jedis.get(key);
         }
     }
 
     public static String put(String key, String value) {
-        try (Jedis jedis = _instance.pool.getResource()) {
+        try (Jedis jedis = getInstance().pool.getResource()) {
             return jedis.set(key, value);
         }
     }
 
     public static void delete(String... keys) {
-        try (Jedis jedis = _instance.pool.getResource()) {
+        try (Jedis jedis = getInstance().pool.getResource()) {
             jedis.del(keys);
         }
+    }
+
+    public static Redis getInstance() {
+        if (_instance == null) {
+            _instance = new Redis();
+        }
+        return _instance;
     }
 
 }

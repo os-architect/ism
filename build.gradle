@@ -13,17 +13,27 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+jar {
+    enabled = true
+}
+
 bootJar {
     baseName = 'ism-api'
     version =  '0.0.0'
+    classifier = 'boot'
+    mainClassName = 'api.Application'
+}
+
+springBoot {
+    mainClassName = 'api.Application'
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.12
-targetCompatibility = 1.12
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
