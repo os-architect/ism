@@ -1,10 +1,9 @@
 package api.implementation.model;
 
-import api.meta.model.Model;
+import core.model.Model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

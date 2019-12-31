@@ -1,4 +1,4 @@
-package api.meta.model;
+package core.model;
 
 import java.io.Serializable;
 import java.util.UUID;

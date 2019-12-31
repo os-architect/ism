@@ -1,6 +1,6 @@
 package api.meta.model.controller;
 
-import api.meta.model.Model;
+import core.model.Model;
 import api.meta.model.repository.Repository;
 
 public abstract class BaseController<M extends Model> {

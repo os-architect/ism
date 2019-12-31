@@ -1,15 +1,13 @@
 package api.meta.model.repository;
 
-import api.implementation.data.Redis;
-import api.implementation.model.Authentication;
+import core.data.Redis;
 import api.implementation.util.Util;
-import api.meta.model.Model;
+import core.model.Model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.constraints.Null;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class Repository<M extends Model> {
