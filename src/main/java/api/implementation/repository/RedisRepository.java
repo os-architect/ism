@@ -1,5 +1,6 @@
-package api.meta.model.repository;
+package api.implementation.repository;
 
+import api.meta.model.repository.AbstractRepository;
 import core.data.Redis;
 import api.implementation.util.Util;
 import core.model.Model;
@@ -10,11 +11,11 @@ import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.UUID;
 
-public class Repository<M extends Model> {
+public class RedisRepository<M extends Model> implements AbstractRepository<M> {
 
     private Class<M> modelClass;
 
-    public Repository(Class<M> modelClass) {
+    public RedisRepository(Class<M> modelClass) {
         this.modelClass = modelClass;
     }
 
@@ -30,12 +31,13 @@ public class Repository<M extends Model> {
 
     }
 
-    public M update(M model) throws IOException {
+    @Override
+    public Model save(Model model) throws Exception {
         Redis.put(modelClass.getName() + model.getId().toString(), Util.toJson(model));
         return get(model.getId());
     }
 
-    public boolean delete(UUID id) throws Exception {
+    public boolean delete(UUID id) {
         Redis.delete(modelClass.getName() + id);
         return true;
     }

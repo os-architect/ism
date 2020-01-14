@@ -2,7 +2,7 @@ version: '3.7'
 services:
   api:
     image: openjdk:14-jdk-alpine
-    command: java -jar /app/build/libs/ism-api-0.0.0-boot.jar
+    command: java -jar /app/build/libs/ism-api-0.0.0.jar
     volumes:
       - .:/app
     links:
@@ -52,7 +52,7 @@ services:
       ports:
           - "2181:2181"
   kafka:
-    build: .
+    image: wurstmeister/kafka
     ports:
       - "9092"
     environment:

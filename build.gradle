@@ -21,7 +21,6 @@ bootJar {
     version =  '0.0.0'
     mainClassName = 'api.Application'
 }
-
 springBoot {
     mainClassName = 'api.Application'
 }
