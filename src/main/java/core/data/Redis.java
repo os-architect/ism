@@ -5,6 +5,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import javax.validation.constraints.Null;
 import java.time.Duration;
 
 public class Redis {
@@ -29,14 +30,19 @@ public class Redis {
     }
 
 
-    public static String get(String key) {
+    public static String get(String key) throws NullPointerException {
         try (Jedis jedis = getInstance().pool.getResource()) {
-            return jedis.get(key);
+            String returnValue = jedis.get(key);
+            if (returnValue == null)
+                throw new NullPointerException();
+            System.out.println("[REDIS] Reading: " + returnValue);
+            return returnValue;
         }
     }
 
     public static String put(String key, String value) {
         try (Jedis jedis = getInstance().pool.getResource()) {
+            System.out.println("[REDIS] Writing: " + key + " with " + value);
             return jedis.set(key, value);
         }
     }

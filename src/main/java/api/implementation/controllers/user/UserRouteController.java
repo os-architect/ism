@@ -1,25 +1,26 @@
 package api.implementation.controllers.user;
 
 import api.implementation.model.User;
-import api.implementation.repository.RedisRepository;
+import api.implementation.util.Util;
 import api.meta.model.controller.ModelRouteController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
-public class UserRouteController extends ModelRouteController<User, RedisRepository<User>> {
+public class UserRouteController extends ModelRouteController<User> {
 
     public UserRouteController() {
         super(new UserModelController());
     }
 
     @PostMapping("/user")
-    public String createUser(@RequestBody User user) {
+    public String create(@RequestBody User user) {
 
         try {
-            UserModelController.addUser(user.getName());
-            return "Works";
+            System.out.println("Saving");
+            this.getModelController().save(user);
+            return Util.toJson(user);
         } catch (Exception e) {
             e.printStackTrace();
             return "Failed";
@@ -27,4 +28,26 @@ public class UserRouteController extends ModelRouteController<User, RedisReposit
 
     }
 
+    @PatchMapping("/user/{id}")
+    public String update(User model) {
+        return null;
+    }
+
+    @DeleteMapping("/user/{id}")
+    public String delete(@PathVariable("id") UUID id) {
+        return null;
+    }
+
+    @GetMapping("/user/{id}")
+    public String get(@PathVariable("id") UUID id) {
+
+        try {
+            User user = this.getModelController().get(id);
+            return Util.toJson(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed";
+        }
+
+    }
 }

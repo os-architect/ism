@@ -3,17 +3,22 @@ package api.meta.model.controller;
 import api.meta.model.repository.AbstractRepository;
 import core.model.Model;
 
-public abstract class ModelRouteController<M extends Model, R extends AbstractRepository<M>> {
+import java.util.UUID;
 
-    private ModelController modelController;
+public abstract class ModelRouteController<M extends Model> {
 
-    public ModelRouteController(ModelController<M, R> modelController) {
+    private ModelController<M> modelController;
+
+    public ModelRouteController(ModelController<M> modelController) {
         this.modelController = modelController;
     }
 
-    public abstract create();
-    public abstract update();
-    public abstract delete();
-    public abstract get();
+    public abstract String create(M model);
+    public abstract String update(M model);
+    public abstract String delete(UUID id);
+    public abstract String get(UUID id);
 
+    public ModelController<M> getModelController() {
+        return modelController;
+    }
 }
