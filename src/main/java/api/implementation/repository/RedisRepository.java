@@ -9,6 +9,8 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.constraints.Null;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class RedisRepository<M extends Model> implements AbstractRepository<M> {
@@ -37,9 +39,21 @@ public class RedisRepository<M extends Model> implements AbstractRepository<M> {
         return get(model.getId());
     }
 
+    @Override
     public boolean delete(UUID id) {
         Redis.delete(modelClass.getName() + id);
         return true;
     }
 
+    @Override
+    public List<M> getAll() throws Exception {
+        String allString = Redis.get(modelClass.getName());
+        List<String> allJson = Util.fromJson(allString, ArrayList.class);
+        List<M> allModels = new ArrayList<M>();
+
+        for (String modelJson : allJson)
+            allModels.add(Util.fromJson(modelJson, modelClass));
+
+        return allModels;
+    }
 }

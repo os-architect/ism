@@ -2,6 +2,7 @@ package api.meta.model.repository;
 
 import core.model.Model;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface AbstractRepository<M extends Model> {
@@ -12,5 +13,6 @@ public interface AbstractRepository<M extends Model> {
     default boolean delete(M model) throws Exception {
         return delete(model.getId());
     }
+    List<M> getAll() throws Exception;
 
 }
