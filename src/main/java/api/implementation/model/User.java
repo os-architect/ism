@@ -30,12 +30,24 @@ public class User implements Model {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public UUID getCharacterId() {
         return characterId;
+    }
+
+    public void setCharacterId(UUID characterId) {
+        this.characterId = characterId;
     }
 
     @Override

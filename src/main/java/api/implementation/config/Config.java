@@ -1,5 +1,8 @@
 package api.implementation.config;
 
+import api.implementation.controllers.character.CharacterModelController;
+import api.implementation.controllers.user.UserModelController;
+import api.implementation.model.Character;
 import api.implementation.model.User;
 import api.implementation.repository.RedisRepository;
 import api.meta.model.repository.AbstractRepository;
@@ -14,6 +17,11 @@ public class Config implements EnvironmentAware {
     private static Config _instance;
 
     public static AbstractRepository<User> userRepository = new RedisRepository<User>(User.class);
+    public static AbstractRepository<Character> charRepository = new RedisRepository<Character>(Character.class);
+
+
+    public static UserModelController userModelController = new UserModelController();
+    public static CharacterModelController characterModelController = new CharacterModelController();
 
     public Config() {}
 

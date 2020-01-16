@@ -1,5 +1,6 @@
 package api.implementation.controllers.user;
 
+import api.implementation.config.Config;
 import api.implementation.model.User;
 import api.implementation.util.Util;
 import api.meta.model.controller.ModelRouteController;
@@ -11,14 +12,13 @@ import java.util.UUID;
 public class UserRouteController extends ModelRouteController<User> {
 
     public UserRouteController() {
-        super(new UserModelController());
+        super(Config.userModelController);
     }
 
     @PostMapping("/user")
     public String create(@RequestBody User user) {
 
         try {
-            System.out.println("Saving");
             this.getModelController().save(user);
             return Util.toJson(user);
         } catch (Exception e) {
@@ -48,12 +48,10 @@ public class UserRouteController extends ModelRouteController<User> {
             e.printStackTrace();
             return e.getMessage();
         }
-
     }
 
     @GetMapping("/user/{id}")
     public String get(@PathVariable("id") UUID id) {
-
         try {
             User user = this.getModelController().get(id);
             return Util.toJson(user);
@@ -61,6 +59,5 @@ public class UserRouteController extends ModelRouteController<User> {
             e.printStackTrace();
             return e.getMessage();
         }
-
     }
 }
