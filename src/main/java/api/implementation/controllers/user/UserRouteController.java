@@ -23,19 +23,32 @@ public class UserRouteController extends ModelRouteController<User> {
             return Util.toJson(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return "Failed";
+            return e.getMessage();
         }
 
     }
 
-    @PatchMapping("/user/{id}")
-    public String update(User model) {
-        return null;
+    @PatchMapping("/user")
+    public String update(@RequestBody User user) {
+        try {
+            this.getModelController().update(user);
+            return Util.toJson(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 
     @DeleteMapping("/user/{id}")
     public String delete(@PathVariable("id") UUID id) {
-        return null;
+        try {
+            this.getModelController().delete(id);
+            return "Entity deleted";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+
     }
 
     @GetMapping("/user/{id}")
@@ -46,7 +59,7 @@ public class UserRouteController extends ModelRouteController<User> {
             return Util.toJson(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return "Failed";
+            return e.getMessage();
         }
 
     }

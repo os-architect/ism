@@ -4,12 +4,9 @@ import api.implementation.config.Config;
 import api.implementation.model.User;
 import api.meta.model.controller.ModelController;
 
-import java.util.List;
 import java.util.UUID;
 
 public class UserModelController extends ModelController<User> {
-
-    public static String key = "usernames";
 
     public UserModelController() {
         super(Config.userRepository);
@@ -18,14 +15,11 @@ public class UserModelController extends ModelController<User> {
     @Override
     public User save(User model) throws Exception {
 
-        if (model.getId() != null) {
-            throw new Exception();
+        if (model.getId() == null) {
+            model.setId(UUID.randomUUID());
         }
 
-        model.setId(UUID.randomUUID());
-        model = this.getRepository().save(model);
-
-        return model;
+        return this.getRepository().save(model);
 
     }
 
