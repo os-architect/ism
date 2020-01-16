@@ -7,10 +7,7 @@ import java.util.UUID;
 
 public interface Model extends Serializable {
 
-    @JsonProperty("id")
     UUID getId();
-
-    @JsonProperty("id")
     void setId(UUID id);
 
 }

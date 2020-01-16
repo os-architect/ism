@@ -4,13 +4,11 @@ import api.implementation.config.Config;
 import api.implementation.model.Character;
 import api.implementation.util.Util;
 import api.meta.model.controller.ModelRouteController;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@RestController
 public class CharacterRouteController extends ModelRouteController<Character> {
 
     public CharacterRouteController() {
@@ -18,7 +16,7 @@ public class CharacterRouteController extends ModelRouteController<Character> {
     }
 
     @PostMapping("/character")
-    public String create(Character model) {
+    public String create(@RequestBody Character model) {
         try {
             this.getModelController().save(model);
             return Util.toJson(model);
@@ -29,7 +27,7 @@ public class CharacterRouteController extends ModelRouteController<Character> {
     }
 
     @PatchMapping("/character")
-    public String update(Character model) {
+    public String update(@RequestBody Character model) {
         try {
             this.getModelController().update(model);
             return Util.toJson(model);
@@ -40,7 +38,7 @@ public class CharacterRouteController extends ModelRouteController<Character> {
     }
 
     @DeleteMapping("/character/{id}")
-    public String delete(UUID id) {
+    public String delete(@PathVariable("id") UUID id) {
         try {
             this.getModelController().delete(id);
             return "Entity deleted";
@@ -50,8 +48,8 @@ public class CharacterRouteController extends ModelRouteController<Character> {
         }
     }
 
-    @GetMapping("/character")
-    public String get(UUID id) {
+    @GetMapping("/character/{id}")
+    public String get(@PathVariable("id") UUID id) {
         try {
             Character character = this.getModelController().get(id);
             return Util.toJson(character);

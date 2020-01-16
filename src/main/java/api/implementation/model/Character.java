@@ -17,19 +17,6 @@ public class Character implements Model {
     private int health;
     private UUID userId;
 
-    @JsonCreator
-    public Character(@JsonProperty("name") String name,
-                     @JsonProperty("x") int x,
-                     @JsonProperty("y") int y,
-                     @JsonProperty("health") int health,
-                     @JsonProperty("userId") String userId) {
-        this.name = name;
-        this.x = x;
-        this.y = y;
-        this.health = health;
-        this.userId = UUID.fromString(userId);
-    }
-
     public Character(){}
 
     @Override

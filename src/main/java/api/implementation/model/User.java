@@ -1,13 +1,10 @@
 package api.implementation.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import core.model.Model;
 
 import java.util.UUID;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Model {
 
     private UUID id;
@@ -15,13 +12,9 @@ public class User implements Model {
     private String password;
     private UUID characterId;
 
-    @JsonCreator
-    public User(@JsonProperty("name") String name,
-                @JsonProperty("password") String password,
-                @JsonProperty("characterId") String characterId) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.characterId = UUID.fromString(characterId);
     }
 
     public User(){}
