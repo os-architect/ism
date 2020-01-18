@@ -1,7 +1,7 @@
 package api.implementation.config;
 
-import api.implementation.controllers.character.CharacterModelController;
-import api.implementation.controllers.user.UserModelController;
+import api.implementation.controllers.model.character.CharacterModelController;
+import api.implementation.controllers.model.user.UserModelController;
 import api.implementation.model.Character;
 import api.implementation.model.User;
 import api.implementation.repository.RedisRepository;

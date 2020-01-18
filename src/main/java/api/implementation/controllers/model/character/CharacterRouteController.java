@@ -1,4 +1,4 @@
-package api.implementation.controllers.character;
+package api.implementation.controllers.model.character;
 
 import api.implementation.config.Config;
 import api.implementation.model.Character;

@@ -1,4 +1,4 @@
-package api.implementation.controllers.user;
+package api.implementation.controllers.model.user;
 
 import api.implementation.config.Config;
 import api.implementation.model.User;
