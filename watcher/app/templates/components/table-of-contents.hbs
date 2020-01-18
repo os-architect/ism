@@ -1,7 +1,8 @@
 {{ this.title }}
-<table>
-{{#each-in this.content as |key value| }}
-    <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
-{{/each-in}}
-</table>
-
+<div class="row">
+  <table class="table">
+  {{#each-in this.content as |key value| }}
+      <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+  {{/each-in}}
+  </table>
+</div>

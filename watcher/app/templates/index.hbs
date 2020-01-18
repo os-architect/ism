@@ -1,10 +1,8 @@
-<table class="index-panel">
-    <div class="row">
-        <div class="col-sm">
-            <Map @map={{this.model.map}} @player={{ this.model.player }} id="map-container"/>
-        </div>
-        <div class="col-sm">
-            <Sidepanel @player={{ this.model.player }}/>
-        </div>
+<div class="row">
+    <div class="col-sm">
+        <Map @map={{this.model.map}} @player={{ this.model.player }} id="map-container"/>
     </div>
-</table>
+    <div class="col-sm">
+        <Sidepanel @player={{ this.model.player }}/>
+    </div>
+</div>
