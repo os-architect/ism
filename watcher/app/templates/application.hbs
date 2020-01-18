@@ -1,29 +1,34 @@
-{{#bs-navbar as |navbar|}}
-    <div class="navbar-header">
-        {{navbar.toggle}}
-        {{#link-to "index"}}
-           <i class="ra ra-tower"/> Watcher
-        {{/link-to}}
-    </div>
+<div class="ism-app-container">
+  {{#bs-navbar as |navbar|}}
+      <div class="navbar-header">
+          {{navbar.toggle}}
+          {{#link-to "index"}}
+             <i class="ra ra-tower"/> Watcher
+          {{/link-to}}
+      </div>
 
-    {{#navbar.content}}
-            {{#navbar.nav as |nav|}}
-            {{#nav.item}}
-                {{#nav.link-to "about"}}about{{/nav.link-to}}
-            {{/nav.item}}
-            {{#if session.isAuthenticated}}
-                {{#nav.item}}
-                    {{#nav.link-to "logout"}}log out{{/nav.link-to}}
-                {{/nav.item}}
-            {{else}}
-                {{#nav.item}}
-                    {{#nav.link-to "login"}}log in{{/nav.link-to}}
-                {{/nav.item}}
-            {{/if}}
-        {{/navbar.nav}}
-    {{/navbar.content}}
-{{/bs-navbar}}
+      {{#navbar.content}}
+              {{#navbar.nav as |nav|}}
+              {{#nav.item}}
+                  {{#nav.link-to "about"}}about{{/nav.link-to}}
+              {{/nav.item}}
+              {{#if session.isAuthenticated}}
+                  {{#nav.item}}
+                      {{#nav.link-to "logout"}}log out{{/nav.link-to}}
+                  {{/nav.item}}
+              {{else}}
+                  {{#nav.item}}
+                      {{#nav.link-to "login"}}log in{{/nav.link-to}}
+                  {{/nav.item}}
+              {{/if}}
+          {{/navbar.nav}}
+      {{/navbar.content}}
+  {{/bs-navbar}}
 
-<div class="container">
-{{ outlet }}
+  <div class="container">
+  {{ outlet }}
+  </div>
 </div>
+
+
+<div class="bb"></div>
