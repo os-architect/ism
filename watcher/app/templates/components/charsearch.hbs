@@ -1,7 +1,7 @@
 <div class="row">
     {{#bs-form formLayout="inline" onSubmit=(action "search") as |form|}}
         {{#form.group}}
-        {{form.element property="name" controlType="text" label="" placeholder="search for player name or id"}}
+        {{form.element property="name" controlType="text" label="" placeholder="search character"}}
         {{bs-button defaultText="ok" type="primary" buttonType="submit"}}
         {{/form.group}}
     {{/bs-form}}
