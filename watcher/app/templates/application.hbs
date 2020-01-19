@@ -1,9 +1,9 @@
-<div class="ism-app-container">
+<div class="container">
   {{#bs-navbar as |navbar|}}
       <div class="navbar-header">
           {{navbar.toggle}}
           {{#link-to "index"}}
-             <i class="ra ra-tower"/> Watcher
+             Watcher
           {{/link-to}}
       </div>
 
@@ -24,8 +24,11 @@
           {{/navbar.nav}}
       {{/navbar.content}}
   {{/bs-navbar}}
+  <div class="navbar-bottom">
 
-  <div class="container">
+  </div>
+
+  <div>
   {{ outlet }}
   </div>
 </div>
