@@ -1,0 +1,53 @@
+<div class="character-compass">
+    <div class="character-controls">
+      <div class="row align-items-start">
+        <div class="col"></div>
+        <div class="col middle-control">
+          {{#bs-form formLayout="inline" onSubmit=(action "movenorth") as |form|}}
+            {{#form.group}}
+              {{bs-button defaultText="^" type="primary" buttonType="submit"}}
+            {{/form.group}}
+          {{/bs-form}}
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row align-items-start">
+        <div class="col">
+          <div class="float-right">
+            {{#bs-form formLayout="inline" onSubmit=(action "movewest") as |form|}}
+              {{#form.group}}
+                {{bs-button defaultText="<" type="primary" buttonType="submit"}}
+              {{/form.group}}
+            {{/bs-form}}
+          </div>
+        </div>
+        <div class="col middle-control">
+          {{#bs-form formLayout="inline" onSubmit=(action "stopmoving") as |form|}}
+            {{#form.group}}
+              {{bs-button defaultText="S" type="primary" buttonType="submit"}}
+            {{/form.group}}
+          {{/bs-form}}
+        </div>
+        <div class="col">
+          <div class="float-left">
+            {{#bs-form formLayout="inline" onSubmit=(action "moveeast") as |form|}}
+              {{#form.group}}
+                {{bs-button defaultText=">" type="primary" buttonType="submit"}}
+              {{/form.group}}
+            {{/bs-form}}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start">
+        <div class="col"></div>
+        <div class="col middle-control">
+          {{#bs-form formLayout="inline" onSubmit=(action "movesouth") as |form|}}
+            {{#form.group}}
+              {{bs-button defaultText="v" type="primary" buttonType="submit"}}
+            {{/form.group}}
+          {{/bs-form}}
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+</div>

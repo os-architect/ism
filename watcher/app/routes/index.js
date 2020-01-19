@@ -64,10 +64,10 @@ export default Route.extend({
         return {
              "name": "Barekiller",
              "meta": {
-                 "level": "117",
-                 "race": "human",
-                 "sex": "male",
-                 "age": "23"
+                 "Level": "117",
+                 "Race": "human",
+                 "Sex": "male",
+                 "Age": "23"
              },
              "skills": {
                  "sword": "17",
@@ -86,7 +86,7 @@ export default Route.extend({
                  "VIT": "34"
              },
              "position": {
-                 "map": "anchovas",
+                 "map": "Fort Ryo",
                  "x": + Math.floor(Math.random() * this.get('numCols')),
                  "y": + Math.floor(Math.random() * this.get('numCols'))
              }

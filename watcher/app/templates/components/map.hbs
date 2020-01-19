@@ -1,17 +1,21 @@
-<div class="map">
-  <table>
-  {{#each-in tiles as |rown row| }}
-      <tr>
-          {{#each-in row as |celln cell| }}
-              <Map-Tile
-                @x={{celln}}
-                @y={{rown}}
-                @player={{ cell.player }}
-                @character={{ cell.character }}
-                @objects={{ cell.objects }}
-              />
-          {{/each-in}}
-      </tr>
-  {{/each-in}}
-  </table>
+<div id="map-container">
+    <div class="map">
+        <table>
+        {{#each-in tiles as |rown row| }}
+            <tr>
+                {{#each-in row as |celln cell| }}
+                    <Map-Tile
+                      @x={{celln}}
+                      @y={{rown}}
+                      @player={{ cell.player }}
+                      @character={{ cell.character }}
+                      @objects={{ cell.objects }}
+                    />
+                {{/each-in}}
+            </tr>
+        {{/each-in}}
+        </table>
+    </div>
 </div>
+
+<CharacterControl @id="character-compass" @player="{{ player }}"/>
