@@ -1,5 +1,23 @@
 <div class="map-tile-content {{ if this.markPlayer "map-tile-player" }}{{ if this.markContent "map-tile-character" }}" >
   {{#if (or this.markPlayer this.markContent)}}
+    {{#if this.markPlayer}}
+        <div class="map-beacon" style="animation-delay: -3s"></div>
+        <div class="map-beacon" style="animation-delay: -2s"></div>
+        <div class="map-beacon" style="animation-delay: -1s"></div>
+        <div class="map-beacon" style="animation-delay: 0s"></div>
+        <div class="player-icon">
+            <i class="ra ra-player"/>
+        </div>
+    {{ else }}
+
+        <div class="character-icon">
+            <i class="ra ra-monster-skull"/>
+        </div>
+      <div class="map-enemy-beacon" style="animation-delay: -3s"></div>
+      <div class="map-enemy-beacon" style="animation-delay: -2s"></div>
+      <div class="map-enemy-beacon" style="animation-delay: -1s"></div>
+      <div class="map-enemy-beacon" style="animation-delay: 0s"></div>
+    {{/if}}
     {{#ember-tooltip}}
       <Profile
         @classNames=["floating-profile"]

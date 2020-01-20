@@ -25,8 +25,8 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import('node_modules/rpg-awesome/css/rpg-awesome.min.css');
-  app.import('node_modules/rpg-awesome/fonts/rpgawesome-webfont.ttf')
-  app.import('node_modules/rpg-awesome/fonts/rpgawesome-webfont.wof')
+  app.import('node_modules/rpg-awesome/fonts/rpgawesome-webfont.ttf');
+  app.import('node_modules/rpg-awesome/fonts/rpgawesome-webfont.wof');
 
   return app.toTree();
 };

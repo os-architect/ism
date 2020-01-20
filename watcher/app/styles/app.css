@@ -3,6 +3,11 @@ body {
     align-items: center;
 }
 
+@font-face {
+    font-family: "RPGAwesome";
+    src: url('/rpg-awesome/fonts/rpgawesome-webfont.ttf') format("truetype");
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -177,13 +182,9 @@ div.container {
 
         /* Map Tiles */
         td.map-tile {
-            height: 10px;
-            width: 10px;
+            height: 25px;
+            width: 25px;
             border: 1px solid lightgrey;
-        }
-
-        td.map-tile.map-tile-empty:hover > div.map-tile-content {
-            background-color: #dbffe5;
         }
 
         td.map-tile > div.map-tile-content {
@@ -193,19 +194,40 @@ div.container {
             width: 100%;
         }
 
+        td.map-tile.map-tile-empty:hover > div.map-tile-content {
+            background-color: #dbffe5;
+        }
+
         /* tile that has the player */
-        td.map-tile > div.map-tile-player {
-            background-color: blue;
-            background: blue;
-            border: 3px solid blue;
-            border-radius: 100%;
+        td.map-tile > div.map-tile-player > .player-icon {
+
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            vertical-align: middle;
         }
 
         td.map-tile > div.map-tile-character {
-            background-color: red;
-            background: red;
-            border: 3px solid red;
-            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        td.map-tile > div i {
+            vertical-align: middle;
+            color: black;
+            z-index: 999;
+        }
+
+        td.map-tile > div.map-tile-player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
     /* Sidepanel */
@@ -433,4 +455,35 @@ form button {
 
 .table th, .table td {
   border-top: 1px solid #63614a;
+}
+
+.map-beacon {
+    border-radius: 50%;
+    background-color: #58a0c3;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+.map-enemy-beacon {
+    border-radius: 50%;
+    background-color: #dc5349;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+  to {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
+  }
 }

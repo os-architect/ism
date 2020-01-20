@@ -48,12 +48,10 @@
     "ember-truth-helpers": "*",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.8.0",
-    "ember-tooltips": "~3.3.0"
+    "ember-tooltips": "~3.3.0",
+    "rpg-awesome": "^0.2.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
-  },
-  "dependencies": {
-    "rpg-awesome": "^0.2.0"
   }
 }
