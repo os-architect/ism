@@ -1,14 +1,20 @@
 <div class="map-tile-content {{ if this.markPlayer "map-tile-player" }}{{ if this.markContent "map-tile-character" }}" >
-    {{#if this.markContent }}
-        {{#ember-tooltip}}
-            <Profile
-                @classNames=["floating-profile"]
-                @character={{ character }}
-                @position={{ character.position }}
-                @attributes={{ character.attributes }}
-                @skills={{ character.skills }}
-                @inventory={{ character.inventory }}
-             />
-         {{/ember-tooltip}}
-    {{/if}}
+  {{#if (or this.markPlayer this.markContent)}}
+    {{#ember-tooltip}}
+      <Profile
+        @classNames=["floating-profile"]
+        @character={{ character }}
+        @position={{ character.position }}
+        @attributes={{ character.attributes }}
+        @skills={{ character.skills }}
+        @inventory={{ character.inventory }}
+      />
+    {{/ember-tooltip}}
+  {{ else }}
+    {{#ember-tooltip}}
+      <div class="no-opacity">
+        {{ this.x }}, {{ this.y }}
+      </div>
+    {{/ember-tooltip}}
+  {{/if}}
 </div>

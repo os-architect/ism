@@ -5,18 +5,20 @@ export default Component.extend({
 
   tagName: 'td',
   classNames: ['map-tile'],
+  classNameBindings: ['mapTileEmpty'],
   _markedPlayerClass: 'map-tile-player',
   objects: [],
   character: [],
+  markPlayer: false,
   x: -1,
   y: -1,
 
-  markPlayer: computed('player', function() {
-      return this.get('player');
+  mapTileEmpty: computed('character', function() {
+    return !this.get('character');
   }),
 
   markContent: computed('character', function() {
-      return this.get('character');
+      return this.get('character') && !this.markPlayer;
   })
 
 });

@@ -3,7 +3,9 @@ import { mod } from 'ember-math-helpers/helpers/mod';
 
 export default Route.extend({
 
-    numCols: 30,
+    numCols: 25,
+    playerPositionX: 351,
+    playerPositionY: 1102,
 
     afterModel(model) {
         self = this;
@@ -13,8 +15,7 @@ export default Route.extend({
     },
 
     getRandomArbitrary() {
-                return ;
-                return 5;
+          return 5;
     },
 
     model() {
@@ -25,12 +26,14 @@ export default Route.extend({
         }
     },
 
-
     generateRandomTiles() {
 
-        var tiles = []
-        var numTiles = this.get('numCols') * this.get('numCols')
-        var randomTileWithEnemy = Math.floor(Math.random() * numTiles)
+        var tiles = [];
+        var numTiles = this.get('numCols') * this.get('numCols');
+        var randomTileWithEnemy = Math.floor(Math.random() * numTiles);
+
+        var tileRealStartX = this.get('playerPositionX') - Math.floor(this.get('numCols')/2);
+        var tileRealStartY = this.get('playerPositionY') - Math.floor(this.get('numCols')/2);
 
         for (var i=0; i<numTiles; i++){
 
@@ -38,14 +41,16 @@ export default Route.extend({
                  "id": Math.random(),
                  "character": false,
                  "objects": [],
-                 "player": false
+                 /* while backend is not ready, this is adjusted in map.js */
+                 position: { /* relative to player. always an offset of numCols around the player position */
+                    'x': tileRealStartX + (i % this.get('numCols')), /* needs to come from backend */
+                    'y': tileRealStartY + (Math.floor(i / this.get('numCols'))) /* needs to come from backend */
+                 }
             })
 
         }
 
-        tiles[0]["character"] = this.enemy
-
-//        tiles[randomTileWithEnemy]["character"] = this.enemy
+        tiles[10]["character"] = this.enemy;
 
         return tiles
 
@@ -87,8 +92,8 @@ export default Route.extend({
              },
              "position": {
                  "map": "Fort Ryo",
-                 "x": + Math.floor(Math.random() * this.get('numCols')),
-                 "y": + Math.floor(Math.random() * this.get('numCols'))
+                 "x": + this.get('playerPositionX')/*Math.floor(Math.random() * this.get('numCols'))*/,
+                 "y": + this.get('playerPositionY')/*Math.floor(Math.random() * this.get('numCols'))*/
              }
         }
 

@@ -5,11 +5,11 @@
             <tr>
                 {{#each-in row as |celln cell| }}
                     <Map-Tile
-                      @x={{celln}}
-                      @y={{rown}}
-                      @player={{ cell.player }}
+                      @x={{ cell.position.x }}
+                      @y={{ cell.position.y }}
                       @character={{ cell.character }}
                       @objects={{ cell.objects }}
+                      @markPlayer={{ cell.markPlayer }}
                     />
                 {{/each-in}}
             </tr>

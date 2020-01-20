@@ -2,34 +2,24 @@ import Component from '@ember/component';
 import EmberObject, { computed } from '@ember/object';
 
 export default Component.extend({
+
     classNames: ["map"],
-
     map: {},
-
-    willRender() {
-
-        var cols = Math.sqrt(this.get('map').tiles.length)
-
-        // add player indication to player tiles
-        var playerY = this.get('player').position.y;
-        var playerX = this.get('player').position.x;
-
-        var playerTile = this.get('map').tiles[(((playerY * cols) + playerX ))]
-        playerTile ["player"] = this.get('player')
-
-    },
 
     tiles: computed('map', function() {
 
-        var tilesArray = this.get('map').tiles
-        var numRows = Math.sqrt(tilesArray.length)
-        var rows = []
+        var tilesArray = this.get('map').tiles;
+        var numRows = Math.sqrt(tilesArray.length);
+        var rows = [];
 
-        for(var i=0; i<numRows; i++){
-            rows.push(tilesArray.splice(0, numRows))
+        tilesArray[Math.floor(tilesArray.length/2)]["character"] = this.get('player');
+        tilesArray[Math.floor(tilesArray.length/2)]["markPlayer"] = true;
+
+        for(var i=0; i < numRows; i++) {
+            rows.push(tilesArray.splice(0, numRows));
         }
 
-        return rows
+        return rows;
 
     })
 

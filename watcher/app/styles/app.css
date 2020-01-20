@@ -182,16 +182,15 @@ div.container {
             border: 1px solid lightgrey;
         }
 
-        td.map-tile:hover {
-          background-color: lightgreen; opacity: 0.2;
+        td.map-tile.map-tile-empty:hover > div.map-tile-content {
+            background-color: #dbffe5;
         }
 
         td.map-tile > div.map-tile-content {
-            border-radius: 50%;
             behavior: url(PIE.htc); /* remove if you don't care about IE8 */
             margin: auto;
-            height: 10px;
-            width: 10px;
+            height: 100%;
+            width: 100%;
         }
 
         /* tile that has the player */
@@ -199,12 +198,14 @@ div.container {
             background-color: blue;
             background: blue;
             border: 3px solid blue;
+            border-radius: 100%;
         }
 
         td.map-tile > div.map-tile-character {
             background-color: red;
             background: red;
             border: 3px solid red;
+            border-radius: 100%;
         }
 
     /* Sidepanel */
@@ -272,7 +273,7 @@ div.container {
 
             div.character-extended-details {
 
-                max-height: 270px;
+                max-height: 360px;
                 overflow-y: scroll;
 
             }
@@ -433,4 +434,3 @@ form button {
 .table th, .table td {
   border-top: 1px solid #63614a;
 }
-
