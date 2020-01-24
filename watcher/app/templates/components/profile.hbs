@@ -1,37 +1,38 @@
-<div class="title"><b>{{ character.name }}</b></div>
+<div class='box'>
+  <div class='box-inner'>
+    <h1 style="color: white; text-align:center;">{{ character.name  }}</h1>
+    <div class="character-info character-content">
+      <div class="row">
+        <div class="col pull-left">
+          <div class="character-avatar">
+            <img src="/assets/images/rogue_avatar.jpg"/>
+          </div>
+        </div>
+        <div class="col">
+          <TableOfContents @title="{{ position.map }} ({{ position.x }}, {{ position.y }})" @content={{ character.meta }}/>
+        </div>
+      </div>
+    </div>
 
-<div class="character-info character-content well">
-    <div class="row">
-          <div class="col pull-left">
-              <div class="character-avatar">
-                  <img src="/assets/images/rogue_avatar.jpg"/>
+      {{#unless this.hidePrivateContent}}
+          <div class="character-content character-extended-details well">
+            <div class="row">
+              <div class="col">
+                <TableOfContents @title="Attributes" @content={{ attributes }}/>
               </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <TableOfContents @title="Skills" @content={{ skills }}/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <TableOfContents @title="Inventory" @content={{ inventory}}/>
+              </div>
+            </div>
           </div>
-          <div class="col">
-              <TableOfContents @title="{{ position.map }} ({{ position.x }}, {{ position.y }})" @content={{ character.meta }}/>
-          </div>
-    </div>
-</div>
+      {{/unless}}
 
-<div class="character-content character-extended-details well">
-  <div class="row">
-    <div class="col">
-      <div class="avatar"/>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <TableOfContents @title="Attributes" @content={{ attributes }}/>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <TableOfContents @title="Skills" @content={{ skills }}/>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <TableOfContents @title="Inventory" @content={{ inventory}}/>
-    </div>
   </div>
 </div>

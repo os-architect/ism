@@ -6,6 +6,24 @@ export default Component.extend({
     classNames: ["map-container"],
     map: {},
 
+    actions: {
+
+        submit: function(){},
+
+        movenorth: function() {
+        },
+        movesouth: function() {
+        },
+        moveeast: function() {
+        },
+        movewest: function() {
+        },
+        stopmoving: function() {
+        },
+
+    },
+
+
     tiles: computed('map', function() {
 
         var tilesArray = this.get('map').tiles;

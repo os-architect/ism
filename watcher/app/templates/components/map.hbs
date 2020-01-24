@@ -9,6 +9,7 @@
                   @character={{ cell.character }}
                   @objects={{ cell.objects }}
                   @markPlayer={{ cell.markPlayer }}
+                  @type="{{ cell.type }}"
                 />
             {{/each-in}}
         </tr>
@@ -17,3 +18,21 @@
 </div>
 
 <CharacterControl @id="character-compass" @player="{{ player }}"/>
+
+<div class="menu">
+    <div class='box'>
+        <div class='box-inner'>
+            {{#bs-form formLayout="inline" onSubmit=(action "movenorth") as |form|}}
+                {{#form.group}}
+                    <div class="row">
+                        <div class="col"> <BsButton @type="primary">Find</BsButton> </div>
+                        <div class="col"> <BsButton @type="primary">Database</BsButton> </div>
+                        <div class="col"> <BsButton @type="primary">Ranking</BsButton> </div>
+                        <div class="col"> <BsButton @type="primary">About</BsButton> </div>
+                        <div class="col"> <BsButton @type="primary">Log out</BsButton> </div>
+                      </div>
+                {{/form.group}}
+            {{/bs-form}}
+        </div>
+    </div>
+</div>

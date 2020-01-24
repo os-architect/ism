@@ -8,6 +8,7 @@ export default Component.extend({
   classNameBindings: ['mapTileEmpty', 'mapTileSelected'],
   _markedPlayerClass: 'map-tile-player',
   objects: [],
+  type: null,
   character: [],
   markPlayer: false,
   isSelected: false,
@@ -19,7 +20,6 @@ export default Component.extend({
   }),
 
   mapTileSelected: computed('isSelected', function() {
-  console.log(this.get('isSelected') && this.get('mapTileEmpty'));
     return this.get('isSelected') && this.get('mapTileEmpty');
   }),
 

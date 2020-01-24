@@ -25,12 +25,13 @@
         @attributes={{ character.attributes }}
         @skills={{ character.skills }}
         @inventory={{ character.inventory }}
+        @hidePrivateContent=true
       />
     {{/ember-tooltip}}
   {{ else }}
     {{#ember-tooltip}}
       <div class="no-opacity">
-        {{ this.x }}, {{ this.y }}
+        {{ this.x }}, {{ this.y }} ({{ this.type }})
       </div>
     {{/ember-tooltip}}
   {{/if}}

@@ -7,6 +7,23 @@ export default Route.extend({
     playerPositionX: 351,
     playerPositionY: 1102,
 
+    actions: {
+
+        submit: function(){},
+
+        movenorth: function() {
+        },
+        movesouth: function() {
+        },
+        moveeast: function() {
+        },
+        movewest: function() {
+        },
+        stopmoving: function() {
+        },
+
+    },
+
     afterModel(model) {
         self = this;
         Ember.run.later((function() {
@@ -19,7 +36,6 @@ export default Route.extend({
     },
 
     model() {
-        console.log('Return new model')
         return {
             "player": this.generatePlayer(),
             "map": this.generateMap()
@@ -45,7 +61,8 @@ export default Route.extend({
                  position: { /* relative to player. always an offset of numCols around the player position */
                     'x': tileRealStartX + (i % this.get('numCols')), /* needs to come from backend */
                     'y': tileRealStartY + (Math.floor(i / this.get('numCols'))) /* needs to come from backend */
-                 }
+                 },
+                 'type': 'grass',
             })
 
         }
