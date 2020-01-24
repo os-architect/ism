@@ -3,7 +3,7 @@ import EmberObject, { computed } from '@ember/object';
 
 export default Component.extend({
 
-    classNames: ["map"],
+    classNames: ["map-container"],
     map: {},
 
     tiles: computed('map', function() {

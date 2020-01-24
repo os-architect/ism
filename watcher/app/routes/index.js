@@ -3,7 +3,7 @@ import { mod } from 'ember-math-helpers/helpers/mod';
 
 export default Route.extend({
 
-    numCols: 25,
+    numCols: 35,
     playerPositionX: 351,
     playerPositionY: 1102,
 

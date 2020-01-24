@@ -1,17 +1,7 @@
-<BsForm @formLayout="vertical" @model={{this}} as |form|>
-  <BsButton @type="primary" @outline={{true}} @buttonType="submit"> <i class='ra ra-player'/> </BsButton>
-  <BsButton @type="primary" @outline={{true}} @buttonType="submit"> <i class='ra ra-book'/> </BsButton>
-  <BsButton @type="primary" @outline={{true}} @buttonType="submit"> <i class='ra ra-wrench'/> </BsButton>
-  <BsButton @type="primary" @outline={{true}} @buttonType="submit"> <i class='ra ra-help'/> </BsButton>
-
-
-</BsForm>
-
-<Charsearch/>
-<Profile 
-    @character={{ player }}
-    @position={{ player.position }}
-    @attributes={{ player.attributes }}
-    @skills={{ player.skills }}
-    @inventory={{ player.inventory }}
- />
+<Profile
+  @character={{ player }}
+  @position={{ player.position }}
+  @attributes={{ player.attributes }}
+  @skills={{ player.skills }}
+  @inventory={{ player.inventory }}
+/>

@@ -1,31 +1,5 @@
 <div class="container">
-    {{#bs-navbar as |navbar|}}
-        <div class="navbar-header">
-            {{navbar.toggle}}
-            {{#link-to "index"}}
-                Watcher
-            {{/link-to}}
-        </div>
-
-        {{#navbar.content}}
-            {{#navbar.nav as |nav|}}
-                {{#nav.item}}
-                    {{#nav.link-to "about"}}about{{/nav.link-to}}
-                {{/nav.item}}
-                {{#if session.isAuthenticated}}
-                    {{#nav.item}}
-                        {{#nav.link-to "logout"}}log out{{/nav.link-to}}
-                    {{/nav.item}}
-                {{else}}
-                    {{#nav.item}}
-                        {{#nav.link-to "login"}}log in{{/nav.link-to}}
-                    {{/nav.item}}
-                {{/if}}
-            {{/navbar.nav}}
-        {{/navbar.content}}
-    {{/bs-navbar}}
-
-    <div class="content" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="content">
         {{ outlet }}
     </div>
 </div>
